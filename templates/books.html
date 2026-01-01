@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books List</title>
+    <style>
+        body { font-family: sans-serif; margin: 2rem; }
+        .book { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; }
+        .title { font-weight: bold; font-size: 1.2rem; }
+        .author { color: #555; }
+    </style>
+</head>
+<body>
+    <h1>My Books Collection</h1>
+    
+    {% block content %}
+    <div class="books-container">
+        {% for book in books %}
+        <div class="book">
+            <div class="title">{{ book.title }}</div>
+            <div class="author">by {{ book.author }} ({{ book.year }})</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>
