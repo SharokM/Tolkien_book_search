@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello! Go to <a href='/books'>/books</a>"
+    return "Hello! Go to our new <a href='/books'>/books</a> page here!"
 
 
 @app.route('/books', methods=["GET"])
@@ -14,7 +14,9 @@ def books():
     response = requests.get(
         "https://openlibrary.org/search.json?author=tolkien")
     response_data = response.json()
-    book_data = response_data["docs"]
+    # how how data stroed in json file, doc or data 
+    book_data = 
+    response_data["docs"]
     print(book_data)
     return render_template('books.html', books=book_data)
 
