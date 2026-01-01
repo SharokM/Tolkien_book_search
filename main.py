@@ -1,4 +1,4 @@
-from flask import Flask, Response, render_template
+from flask import Flask, render_template
 import requests
 
 app = Flask(__name__)
@@ -12,10 +12,10 @@ def index():
 @app.route('/books', methods=["GET"])
 def books():
     response = requests.get(
-        "https://openlibrary.org/search.json?q=crime+and+punishment&fields=key,title,author_name,editions"
-    )
+        "https://openlibrary.org/search.json?author=tolkien")
     response_data = response.json()
-    book_data = response_data.get("docs", [])
+    book_data = response_data["docs"]
+    print(book_data)
     return render_template('books.html', books=book_data)
 
 

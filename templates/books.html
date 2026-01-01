@@ -1,39 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Books List</title>
-        <style>
-            body {
-                font-family: sans-serif;
-                margin: 2rem;
-            }
-            .book {
-                border: 2px solid #fff;
-                padding: 1rem;
-                margin-bottom: 1rem;
-                border-radius: 4px;
-            }
-            .title {
-                font-weight: bold;
-                font-size: 1.2rem;
-            }
-            .author {
-                color: #555;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Crime/ Mystery Books Search</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Books List</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2rem;
+      }
+      .book {
+        border: 2px solid #fff;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+      }
+      .title {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .author {
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tolkien Book Search</h1>
 
-        <div class="books-container">
-            {% for book in books %}
-            <div class="book">
-                <div class="title">{{ book.title }}</div>
-                <div class="author">by {{ book.author_name[0] if book.author_name else 'Unknown' }}</div>
-            </div>
-            {% endfor %}
+    <div class="books-container">
+      {% for book in books %}
+      <div class="book">
+        <div class="title">{{ book.title }}</div>
+        <div class="author">
+          by {{ book.author_name | select | join(', ') if book.author_name else
+          'Unknown'}} in the year {{ book.first_publish_year }}
         </div>
-    </body>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
 </html>
